@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Appbutton extends StatelessWidget {
-   Appbutton({super.key,required this.LabelText,required this.width,required this.Ontap});
+   Appbutton({super.key,required this.LabelText,required this.width,required this.Ontap, this.bgcolor, this.sidecolor, this.fontColor});
    String LabelText;
    double width;
    double hight = 60;
    Function Ontap;
+   Color? bgcolor;
+   Color? sidecolor;
+   Color? fontColor;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,9 +20,9 @@ class Appbutton extends StatelessWidget {
           Ontap();
         },
         child: Text("$LabelText"),style: ButtonStyle(
-        foregroundColor: WidgetStatePropertyAll(Colors.white),
-        shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4)))),
-        backgroundColor: WidgetStatePropertyAll(Get.theme.primaryColor),
+        foregroundColor: WidgetStatePropertyAll(fontColor ?? Colors.white),
+        shape: WidgetStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4)),side: BorderSide(color: sidecolor ?? Colors.white))),
+        backgroundColor: WidgetStatePropertyAll(bgcolor != null? bgcolor : Get.theme.primaryColor),
         minimumSize: WidgetStatePropertyAll(Size(width,hight)),
         maximumSize: WidgetStatePropertyAll(Size(width,hight)) ,
       ),),

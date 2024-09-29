@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:market/View/Checkout_Pages/Checkout.dart';
 import 'package:market/View/MyWidget/AppButton.dart';
 
 import '../ViewModel/CardDataBase.dart';
@@ -32,7 +33,7 @@ class CartScreen extends StatelessWidget {
                     ],),
                   Appbutton(
                     Ontap: (){
-
+                      Get.to(Checkout());
                     },
                     width: 180,
                     LabelText: "CHECKOUT",

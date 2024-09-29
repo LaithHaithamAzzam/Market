@@ -21,6 +21,9 @@ class AuthViewModel extends GetxController{
   @override
   void onInit() async {
     prefs = await SharedPreferences.getInstance();
+    if(_auth.currentUser != null){
+
+    }
     super.onInit();
   }
 
@@ -87,10 +90,10 @@ class AuthViewModel extends GetxController{
      UserModel usermodel = UserModel(
        userid: user.user!.uid,
        email: user.user!.email,
-       name: user.user!.displayName,
+       name: NameController.text,
        picid: user.user!.photoURL,
      );
-     await Firestoreuser().addUserToFireStore(usermodel);
+     await FirestoreUser().addUserToFireStore(usermodel);
      SaveUser(email:user.user!.email ,name: user.user!.displayName ,photo:user.user!.photoURL);
    }
 
@@ -115,5 +118,7 @@ class AuthViewModel extends GetxController{
     prefs!.setBool("IsLogin", true);
     Get.offAll(Mainhomescreen());
   }
+
+
 
 }
